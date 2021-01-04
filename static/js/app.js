@@ -126,6 +126,71 @@ d3.json("static/samples.json").then((importedData) => {
                 item.text(`${key}: ${value}`);
             });
         });
+
+        //gauge chart 
+        //"gauge" id in index
+        //get var for handwashings
+        var washings= initmeta[0].wfreq;
+        
+        console.log(washings);
+        
+        var data3 = [
+            {
+              domain: { x: [0, 1], y: [0, 1] },
+              value: washings,
+              title: { text: "Belly Button Washing Frequency<br>Washes per week" },
+              type: "indicator",
+              mode: "gauge+number",
+              
+              gauge: {
+                axis: { range: [null, 9] },
+                steps: [
+                  { range: [0, 1], color: "#ffffff"},
+                  { range: [1, 2], color: "#c8f6e3" },
+                  { range: [2, 3], color: "#a6e7c5" },
+                  { range: [3, 4], color: "#8ad6a7" },
+                  { range: [4, 5], color: "#71c589" },
+                  { range: [5, 6], color: "#5ab46b" },
+                  { range: [6, 7], color: "#43a34d",},
+                  { range: [7, 8], color: "#2a912d" },
+                  { range: [8, 9], color: "#008000" },
+                ],
+                bar: { color: "purple"}
+              }
+            }
+          ];
+          var xlist=[0,.03,.12,.26,.42,.6,.75,.88,.97,1]
+          var ylist=[.25,.43,.575,.68,.735,.735,.68,.575,.43,.25]
+
+          var layout = { width: 600, 
+                height: 450, 
+                margin: { t: 0, b: 0 }, 
+                shapes:[{ 
+                    type: "line",
+                    x0:.5, 
+                    y0:.26,
+                    x1:xlist[washings],
+                    y1:ylist[washings],
+                    Opacity:.8,
+                    line:{
+                        color:'red',
+                        width:4
+                    }
+                },
+                { type: "circle", 
+                    fillcolor: "grey",
+                    x0: .48,
+                    y0: .24,
+                    x1: .52,
+                    y1: .28,
+                    line: {
+                    color: 'black' 
+                    }
+                }    
+            ]                
+            };
+          Plotly.newPlot('gauge', data3, layout);
+        
     }
 
 
@@ -232,6 +297,71 @@ d3.json("static/samples.json").then((importedData) => {
                 item.text(`${key}: ${value}`);
             });
         })
+
+        //gauge chart 
+        //"gauge" id in index
+        //get var for handwashings
+        var washings= initmeta[0].wfreq;
+        
+        console.log(washings);
+        
+        var data3 = [
+            {
+              domain: { x: [0, 1], y: [0, 1] },
+              value: washings,
+              title: { text: "Belly Button Washing Frequency<br>Washes per week" },
+              type: "indicator",
+              mode: "gauge+number",
+              
+              gauge: {
+                axis: { range: [null, 9] },
+                steps: [
+                  { range: [0, 1], color: "#ffffff"},
+                  { range: [1, 2], color: "#c8f6e3" },
+                  { range: [2, 3], color: "#a6e7c5" },
+                  { range: [3, 4], color: "#8ad6a7" },
+                  { range: [4, 5], color: "#71c589" },
+                  { range: [5, 6], color: "#5ab46b" },
+                  { range: [6, 7], color: "#43a34d",},
+                  { range: [7, 8], color: "#2a912d" },
+                  { range: [8, 9], color: "#008000" },
+                ],
+                bar: { color: "purple"}
+              }
+            }
+          ];
+          var xlist=[0,.03,.12,.26,.42,.6,.75,.88,.97,1]
+          var ylist=[.25,.43,.575,.68,.735,.735,.68,.575,.43,.25]
+
+          var layout = { width: 600, 
+                height: 450, 
+                margin: { t: 0, b: 0 }, 
+                shapes:[{ 
+                    type: "line",
+                    x0:.5, 
+                    y0:.26,
+                    x1:xlist[washings],
+                    y1:ylist[washings],
+                    Opacity:.8,
+                    line:{
+                        color:'red',
+                        width:4
+                    }
+                }, 
+                { type: "circle", 
+                    fillcolor: "grey",
+                    x0: .48,
+                    y0: .24,
+                    x1: .52,
+                    y1: .28,
+                    line: {
+                    color: 'black' 
+                    }
+                }
+            ]                
+            };
+          Plotly.newPlot('gauge', data3, layout);
+        
     };
 
     init();
